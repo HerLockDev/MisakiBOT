@@ -1,15 +1,15 @@
 {
     "name": "Thor UserBot",
-    "description": "Telegramı daha güzel ve daha kolay yapın.",
-    "logo": "https://i.ibb.co/v4VDB8K/logo.jpg",
+    "description": "Telegramı kolay ve eğlenceli yapın.",
+    "logo": "https://i.ibb.co/PMb0mqx/logo.jpg",
     "keywords": [
       "telegram",
       "pyrogram",
       "userbot",
       "thoruserbot"
     ],
-    "repository": "https://github.com/ThorDevs/ThorUserBot",
-    "success_url": "https://t.me/ThorUserBotSupport",
+    "repository": "https://github.com/ThorDevTR/ThorUserBot",
+    "success_url": "https://t.me/ThorUBSupport",
     "stack": "container",
     "env": {
       "ENV": {
