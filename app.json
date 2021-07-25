@@ -1,0 +1,71 @@
+{
+    "name": "Thor UserBot",
+    "description": "Telegramı daha güzel ve daha kolay yapın.",
+    "logo": "https://i.ibb.co/v4VDB8K/logo.jpg",
+    "keywords": [
+      "telegram",
+      "pyrogram",
+      "userbot",
+      "thoruserbot"
+    ],
+    "repository": "https://github.com/ThorDevs/ThorUserBot",
+    "success_url": "https://t.me/ThorUserBotSupport",
+    "stack": "container",
+    "env": {
+      "ENV": {
+        "description": "Bunu HERHANGİ BİR ŞEY olarak ayarlamak, ortam değişkenlerini etkinleştirir",
+        "value": "thor",
+        "required": true
+      },
+      "API_ID": {
+        "description": "Bu değeri şuradan alın: https://my.telegram.org",
+        "value": "",
+        "required": true
+      },
+      "API_HASH": {
+        "description": "Bu değeri şuradan alın: https://my.telegram.org",
+        "value": "",
+        "required": true
+      },
+      "STRING_SESSION": {
+        "description": "Python3 StringSessionOlustur.py'yi yerel olarak çalıştırarak bu değeri oluşturun..",
+        "value": "",
+        "required": true
+      },
+      "SESSION_ADI": {
+        "description": "Botunuza isim verin (fark etmez)",
+        "value": "ThorUserbot",
+        "required": true
+      },
+      "INDIRME_ALANI": {
+        "description": "geçici indirme alanı, dosya sistemini içeren eklentiler için gereklidir..",
+        "value": "downloads/",
+        "required": true
+      },
+      "HEROKU_APIKEY": {
+        "description": "Heroku API Key, 'https://dashboard.heroku.com/account' adresinden alın.",
+        "value": "",
+        "required": true
+      },
+      "HEROKU_APPNAME": {
+        "description": "Heroku uygulama adını buraya ekleyin.",
+        "required": true
+      },
+      "HEROKU": {
+        "description": "Bot heroku üzerinde çalışıyorsa True localde çalışıyorsa false yazın.",
+        "value": "True",
+        "required": true
+      }
+    },
+    "buildpacks": [
+      {
+        "url": "heroku/python"
+      }
+    ],
+    "formation": {
+      "worker": {
+        "quantity": 1,
+        "size": "free"
+      }
+    }
+  }
