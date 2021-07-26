@@ -56,14 +56,14 @@ async def dyno(client:Client, message:Message):
 
         await asyncio.sleep(1.5)
 
-        return await message.edit("**Dyno**:\n\n"
-                            f" ✨ `Kullanılan Dyno Saati`  **({HEROKU_APPNAME})**:\n"
-                            f"   **⇝**  `{AppHours}` **saat**  `{AppMinutes}` **dakika**  "
-                            f"**¦**  [`{AppPercentage}` **%**]"
+        return await message.edit("**⚒ Dyno**:\n\n"
+                            f" 🗡 `Kullanılan dyno süresi`  **({HEROKU_APPNAME})**:\n"
+                            f"   ✒️  `{AppHours}` **saat**  `{AppMinutes}` **dakika**  "
+                            f"➿  [`{AppPercentage}` **%**]"
                             "\n"
-                            " ✨ `Kalan dyno saati`:\n"
-                            f"   **⇝**  `{hours}` **saat**  `{minutes}` **dakika**  "
-                            f"**¦**  [`{percentage}` **%**]"
+                            " 🗡 `Kalan dyno süresi`:\n"
+                            f"   ✒️  `{hours}` **saat**  `{minutes}` **dakika**  "
+                            f"➿  [`{percentage}` **%**]"
                             )
 
 @Client.on_message(filters.command(['hlog'], ['!','.','/']) & filters.me)
