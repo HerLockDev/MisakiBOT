@@ -29,4 +29,4 @@ async def name(client:Client, message:Message):
     await client.update_profile(first_name=first_na,last_name=last_na)
     await message.edit("__İsmini güncelledim...__")
 
-CmdHelp("profile").add_command("bio", "<yazı>", "Profilinizin Hakkında kısmını değiştirmenizi sağlar.").add_command("name", "<ad> <soyad>", "Profilinizin Ad Soyad kısmını değiştirmenizi sağlar.")
+CmdHelp("profile").add_command("bio", "<yazı>", "Profilinizin Hakkında kısmını değiştirmenizi sağlar.").add_command("name", "<ad> <soyad>", "Profilinizin Ad Soyad kısmını değiştirmenizi sağlar.").add()
