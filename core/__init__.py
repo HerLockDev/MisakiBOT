@@ -62,8 +62,7 @@ except ValueError:
 TEMP_AYAR = {"AFK" : "0", 
 "PLUGIN_MSG" : {
     "info" : {"DEVS" : "[Erenay](https://t.me/theErenay) ve [Herus](https://t.me/Herus31)"}
-},
-"ME" : None
+}
 }
 PATTERNS = "."
 CMD_HELP = {}
@@ -91,7 +90,6 @@ def baslangic() -> None:
         thor.join_chat(dev_id)
     except:
         pass
-    TEMP_AYAR["ME"] = thor.get_me()
 
     surum = f"{str(sys.version_info[0])}.{str(sys.version_info[1])}"
     print(f"@{SESSION_ADI} 🍁 Python: {surum} Pyrogram: {__version__}")
