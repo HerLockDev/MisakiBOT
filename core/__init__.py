@@ -59,11 +59,14 @@ except ValueError:
     print("Lütfen ayar.env dosyanızı DÜZGÜNCE oluşturun!")
 
 
-TEMP_AYAR = {"AFK" : "0", 
+TEMP_AYAR = {
+"AFK" : False,
+"AFK_MSG": "Ana Afk Mesajı",
 "PLUGIN_MSG" : {
     "info" : {"DEVS" : "[Erenay](https://t.me/theErenay) ve [Herus](https://t.me/Herus31)"}
-}
-}
+}}
+
+idm = None
 PATTERNS = "."
 CMD_HELP = {}
 CMD_HELP_BOT = {}
@@ -75,7 +78,9 @@ for dosya in os.listdir("./core/plugins/"):
     tum_eklentiler.append(dosya.replace('.py',''))
 
 def baslangic() -> None:
+    global idm
     thor.start()
+    idm = thor.get_me()
     time.sleep(1.5)
     sohbet_id = -1001246173978
     sup_id = -1001462884581
