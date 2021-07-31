@@ -9,8 +9,6 @@ from os import isatty
 
 from core.cmdhelp import CmdHelp
 
-from core import TEMP_AYAR
-
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
@@ -34,7 +32,7 @@ async def on_tag(client:Client, message:Message):
     msg = "Şu an AFK'yım!"
     mentioned = message.mentioned
     rep_m = message.reply_to_message
-    me = TEMP_AYAR["ME"]["id"]
+    me = await client.get_me().id
     if mentioned or rep_m and rep_m.from_user and rep_m.from_user.id == me:
         if TEMP_AYAR["AFK"] != "0":
             if TEMP_AYAR["AFK"][+1:] == '':
