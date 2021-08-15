@@ -2,6 +2,8 @@
 #@ThorUserBot
 
 from os import isatty
+
+from pyrogram.types.messages_and_media import message
 from core import TEMP_AYAR, idm
 from core.cmdhelp import CmdHelp
 
@@ -29,14 +31,14 @@ async def afk(client:Client, message:Message):
             await message.edit(msg + f"\n`Sebep: {TEMP_AYAR['AFK_MSG']}`")
 
 @Client.on_message(filters.incoming & ~filters.bot & ~filters.private) 
-async def on_tag(_,m):                                                                              async def on_tag(_, m):
+async def on_tag(client:Client,message:Message):                                                                            
     msg = "Şu an AFK'yım!"
-    mentioned = m.mentioned
-    rep_m = m.reply_to_message
+    mentioned = message.mentioned
+    rep_m = message.reply_to_message
     if mentioned or rep_m and rep_m.from_user and rep_m.from_user.id == idm:
         if TEMP_AYAR["AFK"]:
 
-            await m.reply(msg + f"\n`Sebep:` {TEMP_AYAR['AFK_MSG']}")
+            await message.reply(msg + f"\n`Sebep:` {TEMP_AYAR['AFK_MSG']}")
 
 @Client.on_message(filters.incoming & ~filters.bot & filters.private)
 async def on_pm(client:Client, message:Message):
