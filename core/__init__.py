@@ -60,7 +60,7 @@ except ValueError:
 
 
 TEMP_AYAR = {
-"AFK" : False,
+"AFK" : "0",
 "AFK_MSG": "Ana Afk Mesajı",
 "PLUGIN_MSG" : {
     "info" : {"DEVS" : "[Erenay](https://t.me/theErenay) ve [Herus](https://t.me/Herus31)"}
