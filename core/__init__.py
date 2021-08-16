@@ -78,9 +78,7 @@ for dosya in os.listdir("./core/plugins/"):
     tum_eklentiler.append(dosya.replace('.py',''))
 
 def baslangic() -> None:
-    global idm
     thor.start()
-    idm = thor.get_me()
     time.sleep(1.5)
     sohbet_id = -1001246173978
     sup_id = -1001462884581
