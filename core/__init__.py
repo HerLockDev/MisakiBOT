@@ -59,14 +59,11 @@ except ValueError:
     print("Lütfen ayar.env dosyanızı DÜZGÜNCE oluşturun!")
 
 
-TEMP_AYAR = {
-"AFK" : False,
-"AFK_MSG": "Ana Afk Mesajı",
+TEMP_AYAR = {"AFK" : "0", 
 "PLUGIN_MSG" : {
     "info" : {"DEVS" : "[Erenay](https://t.me/theErenay) ve [Herus](https://t.me/Herus31)"}
-}}
-
-idm = None
+}
+}
 PATTERNS = "."
 CMD_HELP = {}
 CMD_HELP_BOT = {}
