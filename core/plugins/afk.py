@@ -54,10 +54,10 @@ async def on_pm(client:Client, message:Message):
 @Client.on_message(filters.command(['unafk'], ['!','.','/']) & filters.me)
 async def unafk(client:Client, message:Message):
     if TEMP_AYAR["AFK"] != "0":
-        message.delete()
+        await message.delete()
         await client.send_message(message.chat.id, "**Artık AFK değilim!**")
         TEMP_AYAR["AFK"] = "0"
     else:
-        message.delete()
+        await message.delete()
 
 CmdHelp("afk").add_command("afk", "<İsteğe bağlı sebep>", "AFK olduğunuzu belirtir.", "afk uyuyor").add_command("unafk", None, "AFK modunu kapatır.").add()
