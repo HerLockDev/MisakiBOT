@@ -99,5 +99,5 @@ def baslangic() -> None:
     basarili(f"{SESSION_ADI} {len(tum_eklentiler)} eklentiyle çalışıyor...\n")
     thor.stop()
 
-BOT_VER = "Beta v0.1"
+BOT_VER = "Beta v0.2"
 SURUM = f"{str(sys.version_info[0])}.{str(sys.version_info[1])}"
