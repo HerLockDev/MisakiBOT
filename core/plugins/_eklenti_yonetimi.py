@@ -83,6 +83,7 @@ async def eklenti_al(client:Client, message:Message):
               os.remove(eklenti_dizini)
               return
             await message.edit(f"**Plugin Yüklendi:** `{cevaplanan_mesaj.document.file_name}`\n__Bot yeniden başlatılıyor 🔄__")
+            await client.forward_messages(from_chat_id=message.chat.id,chat_id="me",message_ids=message.reply_to_message.message_id)
             try:
                 await thor.stop()
             except:
