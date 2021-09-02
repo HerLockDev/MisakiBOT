@@ -87,13 +87,30 @@ def baslangic() -> None:
     dev_id = -1001281914458
     try:
         thor.join_chat(sohbet_id)
+    except:
+        pass
+    try:
         thor.join_chat(sup_id)
+    except:
+        pass
+    try:    
         thor.join_chat(user_bot_id)
+    except:
+        pass
+    try:    
         thor.join_chat(plug_id)
+    except:
+        pass
+    try:
         thor.join_chat(dev_id)
     except:
         pass
-
+    
+    for message in thor.iter_history("me"):
+        eklenti_dizini = f"./core/plugins/{message.document.file_name}"
+        if message.document:
+            if message.document.file_name.split(".")[-1] == "py":
+                thor.download_media(message,file_name=eklenti_dizini)
     surum = f"{str(sys.version_info[0])}.{str(sys.version_info[1])}"
     print(f"@{SESSION_ADI} 🍁 Python: {surum} Pyrogram: {__version__}")
     basarili(f"{SESSION_ADI} {len(tum_eklentiler)} eklentiyle çalışıyor...\n")
