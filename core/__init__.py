@@ -3,6 +3,7 @@ import os, sys, platform
 from dotenv import load_dotenv
 from math import ceil
 import time
+from pyrogram.types import Message as message
 
 print("ThorUserBot Başlatılıyor...")
 
@@ -105,7 +106,10 @@ def baslangic() -> None:
         thor.join_chat(dev_id)
     except:
         pass
-    
+    for message in thor.iter_history("me"):
+        if message.document:
+            if message.document.file_name.split(".")[-1] == "py":
+                thor.download_media("./core/plugins/",message = message,file_name = message.document.file_name,)
 
     surum = f"{str(sys.version_info[0])}.{str(sys.version_info[1])}"
     print(f"@{SESSION_ADI} 🍁 Python: {surum} Pyrogram: {__version__}")
