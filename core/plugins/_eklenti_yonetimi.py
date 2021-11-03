@@ -68,7 +68,7 @@ async def eklenti_al(client:Client, message:Message):
                 await message.edit(f"`{message.reply_to_message.document.file_name}` plugini zaten mevcut!__")
                 return
         try:
-            await client.download_media(message.reply_to_message,"./core/plugins")
+            await client.download_media(message=message.reply_to_message,file_name=eklenti_dizini)
             await asyncio.sleep(2)
             try:
                 spec = importlib.util.spec_from_file_location(eklenti_dizini, eklenti_dizini)
