@@ -59,7 +59,7 @@ async def eklenti_al(client:Client, message:Message):
         return
 
     if len(message.command) == 1 and message.reply_to_message.document:
-        if message.reply_to_message.document.file_name.split(".")[-1] != ".py":
+        if message.reply_to_message.document.file_name.split(".")[-1] != "py":
             await message.edit("`Yalnızca python dosyası yükleyebilirsiniz..`")
             return
         eklenti_dizini = f"./core/plugins/{message.reply_to_message.document.file_name}"
