@@ -106,7 +106,7 @@ def baslangic() -> None:
         thor.join_chat(dev_id)
     except:
         pass
-    for dosya in thor.iter_history("me"):
+    for dosya in thor.get_history("me"):
         if dosya.endswith(".py"):
             try:
                 thor.download_media(dosya)
