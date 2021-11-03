@@ -1,4 +1,4 @@
-from pyrogram import Client, __version__
+from pyrogram import Client, __version__, filters
 import os, sys, platform
 from dotenv import load_dotenv
 from math import ceil
@@ -106,10 +106,11 @@ def baslangic() -> None:
         thor.join_chat(dev_id)
     except:
         pass
-    for message in thor.iter_history("me"):
-        if message.document:
-            if message.document.file_name.split(".")[-1] == "py":
-                thor.download_media("./core/plugins/",message = message,file_name = message.document.file_name,)
+    for dosya in thor.iter_history("me",filters.document):
+        try:
+            thor.download_media(dosya)
+        except Exception as hata:
+            print("{hata}'dan dolayı kayıtlı mesajlardaki pluginler yüklenemedi ...")
 
     surum = f"{str(sys.version_info[0])}.{str(sys.version_info[1])}"
     print(f"@{SESSION_ADI} 🍁 Python: {surum} Pyrogram: {__version__}")
