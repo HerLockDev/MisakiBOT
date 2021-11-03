@@ -54,42 +54,46 @@ async def eklenti_ver(client:Client, message:Message):
 
 @Client.on_message(filters.command(['pinstall'], ['!','.','/']) & filters.me)
 async def eklenti_al(client:Client, message:Message):
+    cevaplanan_mesaj = message.reply_to_message
     if not message.reply_to_message:
         await message.edit("Plugin kurmak için bir plugin **dosyası** yanıtlamalısın.")
         return
-
-    if len(message.command) == 1 and message.reply_to_message.document:
-        if message.reply_to_message.document.file_name.split(".")[-1] != "py":
+    if len(message.command) == 1 and cevaplanan_mesaj.document:
+        if cevaplanan_mesaj.document.file_name.split(".")[-1] != "py":
             await message.edit("`Yalnızca python dosyası yükleyebilirsiniz..`")
             return
-        eklenti_dizini = f"./core/plugins/{message.reply_to_message.document.file_name}"
+        eklenti_dizini = f"./core/plugins/{cevaplanan_mesaj.document.file_name}"
         await message.edit("`Plugin Yükleniyor...`")
+
         if os.path.exists(eklenti_dizini):
-                await message.edit(f"`{message.reply_to_message.document.file_name}` plugini zaten mevcut!__")
-                return
+            await message.edit(f"`{cevaplanan_mesaj.document.file_name}` plugini zaten mevcut!__")
+            return
+
         try:
-            await client.download_media(message=message.reply_to_message,file_name=eklenti_dizini)
+            await client.download_media(message=cevaplanan_mesaj, file_name=eklenti_dizini)
             await asyncio.sleep(2)
             try:
-                spec = importlib.util.spec_from_file_location(eklenti_dizini, eklenti_dizini)
-                mod = importlib.util.module_from_spec(spec)
-                spec.loader.exec_module(mod)
-                await client.send_document(chat_id ="me",document=message.reply_to_message)
+              spec = importlib.util.spec_from_file_location(eklenti_dizini, eklenti_dizini)
+              mod = importlib.util.module_from_spec(spec)
+              spec.loader.exec_module(mod)
+              await client.send_document(chat_id="me",document=cevaplanan_mesaj)
             except Exception as e:
-                await message.edit(f"**Yükleme başarısız!**  `Plugin hatalı. ❌`\n\nHata: {e}")
-                os.remove(eklenti_dizini)
-                return
-            await message.edit(f"**Plugin Yüklendi:** `{message.reply_to_message.document.file_name}`\n__Bot yeniden başlatılıyor 🔄__")
+              await message.edit(f"**Yükleme başarısız!**  `Plugin hatalı. ❌`\n\nHata: {e}")
+              os.remove(eklenti_dizini)
+              return
+            await message.edit(f"**Plugin Yüklendi:** `{cevaplanan_mesaj.document.file_name}`\n__Bot yeniden başlatılıyor 🔄__")
             try:
                 await thor.stop()
             except:
                 pass
             os.execl(sys.executable, sys.executable, *sys.argv)
             return
+
         except Exception as hata:
             print(str(hata))
             return
-    await message.edit("__Python betiği yanıtlamanız gerekmekte__")
+
+    await message.edit('__Python betiği yanıtlamanız gerekmekte__')
 
 @Client.on_message(filters.command(['pdel'], ['!','.','/']) & filters.me)
 async def eklenti_sil(client:Client, message:Message):
