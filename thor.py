@@ -1,4 +1,5 @@
-from core import thor, baslangic, load_plugins
+from core import thor, baslangic
+from core.__loadplugins__ import load_plugins
 baslangic() # Bot'u Aç Kapa
 load_plugins()
 
