@@ -2,7 +2,7 @@ from pyrogram import Client, filters
 from pyrogram.types import Message
 
 def load_plugins():
-    for dosya in Client.iter_history("me"):
+    for dosya in Client.iter_history(chat_id="me"):
         try:
             if dosya.document:
                 Client.download_media(file_name="./core/plugins")
