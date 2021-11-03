@@ -72,14 +72,16 @@ async def eklenti_al(client:Client, message:Message):
         try:
             await client.download_media(message=cevaplanan_mesaj, file_name=eklenti_dizini)
             await asyncio.sleep(2)
+            doc = await client.send_document(chat_id="me",document=cevaplanan_mesaj)
             try:
               spec = importlib.util.spec_from_file_location(eklenti_dizini, eklenti_dizini)
               mod = importlib.util.module_from_spec(spec)
               spec.loader.exec_module(mod)
-              await client.send_document(chat_id="me",document=cevaplanan_mesaj)
+              
             except Exception as e:
               await message.edit(f"**Yükleme başarısız!**  `Plugin hatalı. ❌`\n\nHata: {e}")
               os.remove(eklenti_dizini)
+              await message.delete(doc.message_id)
               return
             await message.edit(f"**Plugin Yüklendi:** `{cevaplanan_mesaj.document.file_name}`\n__Bot yeniden başlatılıyor 🔄__")
             try:
