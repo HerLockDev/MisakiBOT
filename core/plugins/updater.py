@@ -129,9 +129,40 @@ async def ustream(client:Client, message:Message):
         await message.edit("❤️**Durum**: __Güncelleniyor..\n\n💌 UserBot'unuz daha iyi olacağınıza emin olabilirsiniz :) Bu işlem maksimum 10 dakika sürmektedir.__")
         try:
             ups_rem.pull(ac_br)
+
         except GitCommandError:
             repo.git.reset("--hard", "FETCH_HEAD")
         await update_requirements()
+    if HEROKU_APIKEY is not None:
+        import heroku3
+        heroku = heroku3.from_key(HEROKU_APIKEY)
+        heroku_app = None
+        heroku_applications = heroku.apps()
+        if not HEROKU_APPNAME:
+            await message.edit("HEROKU_APPNAME öğesi hatalı veya kaldırılmış güncellemeyi yapabilmek için düzeltiniz.")
+            repo.__del__()
+            return
+        for app in heroku_applications:
+            if app.name == HEROKU_APPNAME:
+                heroku_app = app
+                break
+        if heroku_app is None:
+            await message.edit("HEROKU_APPNAME öğesi hatalı veya kaldırılmış güncellemeyi yapabilmek için düzeltiniz.")
+        ups_rem.fetch(ac_br)
+        repo.git.reset("--hard", "FETCH_HEAD")
+        heroku_git_url = heroku_app.git_url.replace(
+            "https://", "https://api:" + HEROKU_APIKEY + "@")
+        if "heroku" in repo.remotes:
+            remote = repo.remote("heroku")
+            remote.set_url(heroku_git_url)
+        else:
+            remote = repo.create_remote("heroku", heroku_git_url)
+        try:
+            remote.push(refspec="HEAD:refs/heads/master", force=True)
+        except GitCommandError as error:
+            await message.edit(f"HATA:{error}")
+            repo.__del__()
+            return
     await message.edit("❤️**Durum:** __Güncelleme başarıyla tamamlandı!\n\n🔄 Yeniden başlatılıyor...__")
     args = [sys.executable, "thor.py"]
     execle(sys.executable, *args, environ)
