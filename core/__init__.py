@@ -106,13 +106,6 @@ def baslangic() -> None:
         thor.join_chat(dev_id)
     except:
         pass
-    for dosya in thor.get_history("me"):
-        if dosya.endswith(".py"):
-            try:
-                thor.download_media(dosya)
-            except Exception as hata:
-                print("{hata}'dan dolayı kayıtlı mesajlardaki pluginler yüklenemedi ...")
-
     surum = f"{str(sys.version_info[0])}.{str(sys.version_info[1])}"
     print(f"@{SESSION_ADI} 🍁 Python: {surum} Pyrogram: {__version__}")
     basarili(f"{SESSION_ADI} {len(tum_eklentiler)} eklentiyle çalışıyor...\n")
