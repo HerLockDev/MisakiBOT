@@ -1,12 +1,20 @@
 from pyrogram import Client, filters
 from pyrogram.types import Message
-
-def load_plugins():
-    for dosya in Client.iter_history(chat_id="self"):
+import importlib
+async def load_plugins():
+    
+    for dosya in await Client.iter_history(chat_id="me"):
+        eklenti_dizini = f"./core/plugins/{dosya.file_name}"
         try:
             if dosya.document:
-                Client.download_media(file_name="./core/plugins")
+                await Client.download_media(file_name=f"./core/plugins/{dosya.file_name}")
+                try:
+                    spec = importlib.util.spec_from_file_location(eklenti_dizini, eklenti_dizini)
+                    mod = importlib.util.module_from_spec(spec)
+                    spec.loader.exec_module(mod)
+                except Exception as e:
+                    print(f"{hata}'dan dolayı sonradan yüklenmiş pluginler yüklenemedi.")
             else:
                 break
         except Exception as hata:
-            print(f"{hata}'dan dolayı sonradan yüklenmiş pluginler")
+            print(f"{hata}'dan dolayı sonradan yüklenmiş pluginler yüklenemedi.")
