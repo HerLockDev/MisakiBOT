@@ -5,7 +5,7 @@ import importlib
 import traceback
 async def load_plugins():
     
-    for dosya in await thor.iter_history(chat_id="me"):
+    async for dosya in await thor.iter_history(chat_id="me"):
         eklenti_dizini = f"./core/plugins/{dosya.file_name}"
         
         if dosya.document:
