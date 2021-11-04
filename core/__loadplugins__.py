@@ -1,6 +1,7 @@
 from pyrogram import Client, filters
 from pyrogram.types import Message
 import importlib
+import traceback
 async def load_plugins():
     
     for dosya in await Client.iter_history(chat_id="me"):
@@ -14,6 +15,6 @@ async def load_plugins():
                     mod = importlib.util.module_from_spec(spec)
                     spec.loader.exec_module(mod)
                 except Exception as e:
-                    print(f"{hata}'dan dolayı sonradan yüklenmiş pluginler yüklenemedi.")
+                    traceback.print_exc()
             except Exception as hata:
-                print(f"{hata}'dan dolayı sonradan yüklenmiş pluginler yüklenemedi.")
+                traceback.print_exc()
