@@ -8,5 +8,5 @@ async def run_bot():
     await idle()
     await thor.stop()
 
-if name == '__main__':
+if __name__ == '__main__':
     thor.run(run_bot())
