@@ -1,10 +1,11 @@
 from pyrogram import Client, filters
 from pyrogram.types import Message
+from core import thor
 import importlib
 import traceback
 async def load_plugins():
     
-    for dosya in await Client.iter_history(chat_id="me"):
+    for dosya in await thor.iter_history(chat_id="me"):
         eklenti_dizini = f"./core/plugins/{dosya.file_name}"
         
         if dosya.document:
