@@ -41,6 +41,7 @@ INDIRME_ALANI   = os.environ.get("INDIRME_ALANI", "downloads/")
 HEROKU_APPNAME  = os.environ.get("HEROKU_APPNAME", str)
 HEROKU_APIKEY   = os.environ.get("HEROKU_APIKEY", str)
 HEROKU          = os.environ.get("HEROKU", str)
+PLUGIN_CHANNEL_ID = str(os.environ.get("PLUGIN_CHANNEL_ID", str))
 
 if not os.path.isdir(INDIRME_ALANI): os.makedirs(INDIRME_ALANI)
 
