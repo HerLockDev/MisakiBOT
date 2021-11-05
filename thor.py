@@ -1,12 +1,10 @@
 from core import thor, baslangic
 from core.__loadplugins__ import load_plugins
 from pyrogram import idle
-async def run_bot():
-    baslangic()
-    await load_plugins()
-    await thor.start()
-    await idle()
-    await thor.stop()
+
+baslangic()
+load_plugins()
+
 
 if __name__ == '__main__':
-    thor.run(run_bot())
+    thor.run()
