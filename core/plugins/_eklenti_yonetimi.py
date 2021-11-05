@@ -51,7 +51,7 @@ async def eklenti_ver(client:Client, message:Message):
 
     else:
         await message.edit('**Dosya Bulunamadı!**')
-
+"""
 @Client.on_message(filters.command(['pinstall'], ['!','.','/']) & filters.me)
 async def eklenti_al(client:Client, message:Message):
     cevaplanan_mesaj = message.reply_to_message
@@ -122,3 +122,4 @@ async def eklenti_sil(client:Client, message:Message):
         return
 
     await message.edit("`Geçerli bir plugin adı girin!`")
+"""
