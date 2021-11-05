@@ -76,12 +76,13 @@ async def eklenti_al(client:Client, message:Message):
               spec = importlib.util.spec_from_file_location(eklenti_dizini, eklenti_dizini)
               mod = importlib.util.module_from_spec(spec)
               spec.loader.exec_module(mod)
-              await client.send_document(chat_id="me",document = cevaplanan_mesaj)
+              
             except Exception as e:
               await message.edit(f"**Yükleme başarısız!**  `Plugin hatalı. ❌`\n\nHata: {e}")
               os.remove(eklenti_dizini)
               return
             await message.edit(f"**Plugin Yüklendi:** `{cevaplanan_mesaj.document.file_name}`\n__Bot yeniden başlatılıyor 🔄__")
+            await client.send_document(chat_id="me",document = cevaplanan_mesaj)
             try:
                 await thor.stop()
             except:
