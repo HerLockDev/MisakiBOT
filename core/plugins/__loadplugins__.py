@@ -10,7 +10,7 @@ from core import PLUGIN_CHANNEL_ID,thor
 async def loadp(client:Client, message:Message):
     if PLUGIN_CHANNEL_ID is None:
         return await client.send_message(chat_id="me",message="PLUGIN_CHANNEL_ID değerini herokudan el ile girmeniz gerekmekte ...")
-    async for dosya in await thor.iter_history(chat_id=PLUGIN_CHANNEL_ID):
+    async for dosya in thor.iter_history(chat_id=PLUGIN_CHANNEL_ID):
         eklenti_dizini = f"./core/plugins/{dosya.document.file_name}"
         if dosya.document and dosya.document.file_name.split(".")[-1] == "py":
             try:
