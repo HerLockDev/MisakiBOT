@@ -65,7 +65,7 @@ TEMP_AYAR = {
 "AFK" : "0",
 "AFK_MSG": "Ana Afk Mesajı",
 "PLUGIN_MSG" : {
-    "info" : {"DEVS" : "[Erenay](https://t.me/theErenay) ve [Herus](https://t.me/Herus31)"}
+    "info" : {"DEVS" : " [Herlock](https://t.me/tht_herlock)"}
 }}
 
 idm = None
