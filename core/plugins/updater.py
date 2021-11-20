@@ -48,7 +48,7 @@ async def ustream(client:Client, message:Message):
             conf = "force"
     else:
         conf = ""
-    off_repo = "https://github.com/ThorDevTR/ThorUserBot"
+    off_repo = "https://github.com/HerLockDev/Misaki"
     if conf == "force":
         force_update = True
     else:
@@ -77,7 +77,7 @@ async def ustream(client:Client, message:Message):
 
     ac_br = repo.active_branch.name
     if ac_br != 'main':
-        await message.edit("**[UPDATER]:**` Galiba Thoru modifiye ettin ve kendi branşını kullanıyorsun.\nBu durum güncelleyicinin kafasını karıştırıyor\nLütfen Thor botunu resmi repodan kullan.`")
+        await message.edit("**[UPDATER]:**` Galiba Misakiyi modifiye ettin ve kendi branşını kullanıyorsun.\nBu durum güncelleyicinin kafasını karıştırıyor\nLütfen Misaki botunu resmi repodan kullan.`")
         repo.__del__()
         return
 
