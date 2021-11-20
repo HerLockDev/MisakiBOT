@@ -26,7 +26,7 @@ async def destek(client:Client, message:Message):
     girilen_yazi = message.text.split()
 
     if len(girilen_yazi) == 1:
-        mesaj = "**Nasıl kullanacağını öğrenmek için modül adı girmelisin!**\nÖrnek: `.thor afk`\n\n"
+        mesaj = "**Nasıl kullanacağını öğrenmek için modül adı girmelisin!**\nÖrnek: `.misaki afk`\n\n"
 
         mesaj += "**🗃 Modüller:**\n"
         mesaj += eklentilerim()
