@@ -20,7 +20,7 @@ Kullanabileceğin komutlar eklentilerimde gizli..\n\n"""
 
     await message.edit(mesaj, disable_web_page_preview=True)
 
-@Client.on_message(filters.command(['thor'], ['!','.','/']) & filters.me)
+@Client.on_message(filters.command(['misaki'], ['!','.','/']) & filters.me)
 async def destek(client:Client, message:Message):
 
     girilen_yazi = message.text.split()
