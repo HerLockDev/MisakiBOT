@@ -5,7 +5,7 @@ from math import ceil
 import time
 from pyrogram.types import Message as message
 
-print("ThorUserBot Başlatılıyor...")
+print("MisakiUserBot Başlatılıyor...")
 
 def hata(yazi:str) -> None:
    print("[✗] {}".format(yazi))
