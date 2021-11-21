@@ -51,7 +51,7 @@ if STRING_SESSION.startswith('-') or len(STRING_SESSION) < 351:
 
 
 try:
-    thor        = Client(
+    misaki        = Client(
 STRING_SESSION,
 api_id          = API_ID,
 api_hash        = API_HASH,
@@ -80,31 +80,31 @@ for dosya in os.listdir("./core/plugins/"):
     tum_eklentiler.append(dosya.replace('.py',''))
 
 def baslangic() -> None:
-    thor.start()
+    misaki.start()
     time.sleep(1.5)
-    sohbet_id = -1001246173978
-    sup_id = -1001462884581
-    user_bot_id = -1001443146628
-    plug_id = -1001329844111
-    dev_id = -1001281914458
+    sohbet_id = -1001614494419
+    sup_id =-1001614494419
+    user_bot_id = -1001614494419
+    plug_id = -1001614494419
+    dev_id = -2124244679
     try:
-        thor.join_chat(sohbet_id)
+        misaki.join_chat(sohbet_id)
     except:
         pass
     try:
-        thor.join_chat(sup_id)
+        misaki.join_chat(sup_id)
     except:
         pass
     try:    
-        thor.join_chat(user_bot_id)
+        misaki.join_chat(user_bot_id)
     except:
         pass
     try:    
-        thor.join_chat(plug_id)
+        misaki.join_chat(plug_id)
     except:
         pass
     try:
-        thor.join_chat(dev_id)
+        misaki.join_chat(dev_id)
     except:
         pass
     surum = f"{str(sys.version_info[0])}.{str(sys.version_info[1])}"
@@ -112,5 +112,5 @@ def baslangic() -> None:
     basarili(f"{SESSION_ADI} {len(tum_eklentiler)} eklentiyle çalışıyor...\n")
     thor.stop()
 
-BOT_VER = "Beta v0.2"
+BOT_VER = "Beta v0.1"
 SURUM = f"{str(sys.version_info[0])}.{str(sys.version_info[1])}"
